@@ -14,10 +14,10 @@ def user_agent():
     return page
 
 def parse():
-    c = user_agent()
+    connect = user_agent()
     filtered = {}
-    if c.status_code == 200:
-        soup = BeautifulSoup(c.text, "html.parser")
+    if connect.status_code == 200:
+        soup = BeautifulSoup(connect.text, "html.parser")
         allfilms= soup.findAll('div', class_='ipc-metadata-list-summary-item__tc')
         for data in allfilms:
             movie_link = data.find('h3', {'class': 'ipc-title__text'}).text
